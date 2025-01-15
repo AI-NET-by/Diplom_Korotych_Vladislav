@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# Получаем текущую директорию скрипта
-SCRIPT_DIR=$(dirname "$0")
+DIR=$(dirname "$0")
 
-# Определяем путь к тестовому файлу относительно директории со скриптом
-TEST_FILE="$SCRIPT_DIR/../tests"
+FILE="$DIR/../tests/locustfile.py"
 
-# Определяем путь к директории с отчетами относительно директории со скриптом
-REPORT_DIR="$SCRIPT_DIR/../reports"
+start http://localhost:8089/
 
-# Запускаем pytest с использованием относительного пути к файлу test_my_project.py и директории с отчетами
-pytest -v -s "$TEST_FILE" --alluredir="$REPORT_DIR"
-
+locust -f "$FILE" --host https://ru.pinterest.com --run-time 10 --autostart --autoquit 10
