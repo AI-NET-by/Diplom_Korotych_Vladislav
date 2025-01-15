@@ -60,8 +60,3 @@ def test_search_box_container(web_browser):
         check.equal(page.get_current_url(), 'https://ru.pinterest.com/today/best/dolled-up-home-decor/123788/')
 
 
-# def test_registration(web_browser):
-#     """"Этот тест проверяет кликабельность, наличие элементов, правописание"""
-
-    # page = MainPage(web_browser)
-
