@@ -27,16 +27,21 @@ def test_headers(web_browser):
                         (page.btn_today,"Сегодня", "https://ru.pinterest.com/today/"),
                         (page.btn_collections,"Коллекции", "https://www.pinterest.com/html_sitemap/boards_a.html")]
 
+    switch_page_window = 1
     for elements, text_element, url_elements in elements_headers:
         with allure.step('Тест проверки правильного URL при переходе'):
-             elements.click()
-             page.switch_to_window()
+            elements.click()
+            page.switch_to_window(switch_page_window)
+            time.sleep(3)
+            check.equal(page.get_current_url(),url_elements,"Неправильный url")
+            page.switch_to_window(0)
+        switch_page_window +=1
 
         with allure.step('Тест проверки отображения на экране'):
-             check.is_true(elements.is_visible())
+            check.is_true(elements.is_visible())
 
         with allure.step('Тест проверки кликабельности'):
-             check.is_true(elements.is_clickable())
+            check.is_true(elements.is_clickable())
 
     # with allure.step('Тест проверки орфографии'):
     #     page.btn_blog.click()

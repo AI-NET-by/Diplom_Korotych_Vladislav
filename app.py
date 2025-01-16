@@ -56,7 +56,7 @@ def run_aut_lk():
 
 
 @app.route("/run_api")
-def run_aut_lk():
+def run_api():
     """ Эта функция запуская и отвечает за API тестирование. """
 
     cmd = ["C:/Program Files/Git/bin/bash.exe", "./scripts/run_api.sh"]
